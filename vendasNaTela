@@ -1,0 +1,78 @@
+package aplicacao;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner teclado  = new Scanner (System.in);
+		produto produto = new produto();
+		cliente cliente = new cliente();
+		
+		System.out.println ("Informe quantos clientes foram cadastrados: ");
+		cliente.quantidadeCliente = teclado.nextDouble();
+		System.out.println ("Informe o produto cadastrasdo: ");
+		produto.produto = teclado.next();
+		System.out.println ("Informe a quantidade do produto: ");
+		produto.quantidade = teclado.nextDouble();
+		System.out.println ("Informe o preço: ");
+		produto.preco = teclado.nextDouble();
+		System.out.println ("Quantidade de Clientes: " +cliente.quantidadeCliente+ ", Produto: " +produto.produto+ ", Estoque atual: " +produto.quantidade+ ", Preço: " +produto.preco);
+		
+		System.out.println ("Acrescentar mais produtos: ");
+		int estoque = teclado.nextInt();
+		produto.addProduto(estoque);
+		
+		System.out.println ("Quantas vendas foram realizadas: ");
+		estoque = teclado.nextInt();
+		produto.subProduto(estoque);
+		
+		System.out.println ("Quantidade de cliente: " +cliente.quantidadeCliente+ ", Produto: " +produto.produto+ ", Quantidade de produto: " +produto.quantidade+ ", Preço: " +produto.preco+ ", Valor atual do estoque: " +produto.preco*produto.quantidade);
+		
+		JOptionPane.showConfirmDialog (null, "Clientes cadastrados: " +cliente.quantidadeCliente+ ", Produto cadastrado: " +produto.produto+ ", Estoque atual: " +produto.quantidade);
+		
+		teclado.close();
+	}
+
+	
+}
+
+
+ //segundario
+
+  package aplicacao;
+
+public class produto {
+
+	public String produto;
+	public double quantidade = 0;
+	public double preco = 0;
+	
+	public void addProduto (int estoque) {
+		this.quantidade += estoque;
+	}
+	
+	public void subProduto (int estoque) {
+		this.quantidade -= estoque;
+	}
+	
+}
+
+ //terceiro
+  
+  package aplicacao;
+
+public class cliente {
+
+	public String cliente;
+	public double quantidadeCliente = 0;
+	
+	public void addCliente (int cadastro) {
+	this.quantidadeCliente += cadastro;
+	}
+	
+	public void subCliente (int cadastro) {
+	this.quantidadeCliente -= cadastro;	
+	}
+	
+}
